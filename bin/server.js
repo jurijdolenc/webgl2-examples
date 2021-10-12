@@ -20,7 +20,7 @@ const server = http.createServer(async (req, res) => {
     // get a file path from the project root
     const rootPath = path.join(__dirname, '..');
     let filePath = path.join(rootPath, req.url);
-    if (filePath.endsWith('/')) {
+    if (filePath.endsWith('\\')) {
         filePath = path.join(filePath, 'index.html');
     }
 

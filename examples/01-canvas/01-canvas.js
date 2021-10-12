@@ -30,7 +30,7 @@ class Application {
         this._resize();
         this.update();
         this.render();
-        requestAnimationFrame(this._update);
+        requestAnimationFrame(this._update); //req browserju, da naslednjič ko se screen refresha pokliče podano funkcijo
     }
 
     _resize() {
@@ -39,7 +39,7 @@ class Application {
         // not change the size of the canvas.
         const canvas = this.canvas;
         const gl = this.gl;
-
+        //računaš rjekcijsko matriko mogoče
         if (canvas.width !== canvas.clientWidth ||
             canvas.height !== canvas.clientHeight)
         {
@@ -63,9 +63,9 @@ class Application {
 
     render() {
         // render code (gl API calls)
-
+        //vse kar se tiče webgl in risanja
         const gl = this.gl;
-        gl.clearColor(0.3, 0.4, 0.9, 1.0);
+        gl.clearColor(0.3, 0.4, 0.9, 1.0); //barva s katero bomo clearal zaslon + prosojnost
         gl.clear(gl.COLOR_BUFFER_BIT);
     }
 

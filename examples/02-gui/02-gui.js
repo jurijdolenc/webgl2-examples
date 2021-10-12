@@ -1,10 +1,10 @@
-import { GUI } from '../../lib/dat.gui.module.js';
+import { GUI } from '../../lib/dat.gui.module.js'; //za spreminjanje barv (maš še sliderje, checkboxe)
 import { Application } from '../../common/engine/Application.js';
 
 class App extends Application {
 
     start() {
-        this.color = [ 65, 105, 225 ];
+        this.color = [ 65, 105, 225 ];  //na zacetku nastavljena barva
     }
 
     render() {
@@ -19,7 +19,7 @@ class App extends Application {
 
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.querySelector('canvas');
-    const app = new App(canvas);
+    const app = new App(canvas); //tukaj bom spreminjal  var color
     const gui = new GUI();
     gui.addColor(app, 'color');
 });
