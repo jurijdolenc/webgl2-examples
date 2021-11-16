@@ -15,6 +15,9 @@ class App extends Application {
         // This time we store all the data interleaved, so that
         // all the attributes for each vertex are close in memory.
         // This significantly improves cache usage.
+
+        // dve mesti za pozicije, 4 mesta za barve...
+
         const vertices = new Float32Array([
              0.0,  0.5,    1, 0, 0, 1,
             -0.5, -0.5,    0, 1, 0, 1,

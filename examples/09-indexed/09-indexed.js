@@ -26,7 +26,7 @@ class App extends Application {
         gl.enable(gl.CULL_FACE);
 
         // Cull back faces, not front. This is actually the default.
-        gl.cullFace(gl.BACK);
+        gl.cullFace(gl.FRONT);
 
         // A front face is defined by counter-clockwise orientation.
         // This is also the default, but we set it here for clarity.
@@ -60,11 +60,11 @@ class App extends Application {
 
         this.vao = gl.createVertexArray();
         gl.bindVertexArray(this.vao);
-
+        //ogljisca
         this.vertexBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-
+        //indexi
         this.indexBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.indexBuffer);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW);
@@ -118,7 +118,7 @@ class App extends Application {
         // whether to transpose the matrix before uploading it to the GPU.
         gl.uniformMatrix4fv(program.uniforms.uModelViewProjection,
             false, this.mvpMatrix);
-
+        //drawArrays ne more risat indeksirane geometrije
         // Call drawElements when drawing indexed geometry. The number of
         // indices is 36, each index is a short (Uint16Array) and start
         // with the index at index 0.

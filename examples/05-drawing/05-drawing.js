@@ -28,13 +28,36 @@ class App extends Application {
         // uniform locations for each of the supplied shaders.
         this.programs = WebGL.buildPrograms(gl, shaders);
 
+
+
+        // const a = new ArrayBuffer(1024);
+        // bytei so sam bytei in nimajo tipa
+        // const t = new Float32Array(a);
+        //ne kopira arraya in zj interpretiras te bajte kot floate...
+        //256 floatov 1024/4 -> 1 float = 4 bajte
+        // t[0] = 5.6;
+        // t[1] = 1.1;
+        // console.log(t);
+        // const u  = new Uint8Array(a);
+        // console.log(u); //to je pol cudn k gleda na te prejsnje bajte k so bli nastavljeni na float...
+        //
+        // const d = new DataView(a);
+        // d.setUint8(2,10)
+        // d.setFloat32(4,1.234);
+        // console.log(d);
+
+
         // Triangle vertices. They have to be stored in a typed array
         // to be properly transferred to the GPU memory.
         const vertices = new Float32Array([
-             0.0,  0.5,
-            -0.5, -0.5,
-             0.5, -0.5
+             0.0,0.0,
+            0.0,0.5,
+            0.5,0.5,
+            0.0,0.0,
+            0.5,0.0,
+            0.5,0.5
         ]);
+
 
         // Create a buffer object to represent a chunk of GPU memory.
         this.vertexBuffer = gl.createBuffer();
@@ -51,8 +74,11 @@ class App extends Application {
 
         // Repeat for color data.
         const colors = new Float32Array([
-            1, 0, 0, 1,
+            1, 0, 1, 1,
             0, 1, 0, 1,
+            0, 0, 1, 1,
+            1, 0, 1, 1,
+            1, 1, 1, 1,
             0, 0, 1, 1
         ]);
 
@@ -108,11 +134,13 @@ class App extends Application {
         // need to be set again when switching to a different program and
         // then switching back.
         // The uniform uOffset is of type vec2 so we pass in two floats (2f).
+        //lahko podaš offset tud kot array in samo spremeniš funkcijo v gl.uniform2fv(...);
+
         gl.uniform2f(program.uniforms.uOffset, this.offsetX, this.offsetY);
 
         // Draw! We are drawing triangles, passing in 3 vertices
         // and starting with the vertex at index 0.
-        gl.drawArrays(this.primitiveType, 0, 3);
+        gl.drawArrays(this.primitiveType, 0, 6);
     }
 
 }
